@@ -14,3 +14,5 @@ Objetivo é ter um exemplo pratico de uso.
 
 ---
 
+![Modelo](imgs/simpleinjectorbasic-img1.png)
+
