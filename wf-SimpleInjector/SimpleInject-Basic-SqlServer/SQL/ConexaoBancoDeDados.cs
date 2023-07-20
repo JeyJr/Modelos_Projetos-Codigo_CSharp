@@ -10,8 +10,7 @@ namespace SimpleInject_Basic_SqlServer.SQL
 {
     public class ConexaoBancoDeDados : IConexaoBancoDeDados
     {
-
-        private static string autenticacaoWindows = "Data Source = INSTANCIA;Initial Catalog = BASE DE DADOS; Integrated Security = True;";
+        private static string autenticacaoWindows = "Data Source = JEY\\JEYJR;Initial Catalog = DEV; Integrated Security = True;";
         public string ObterStringConexao()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(autenticacaoWindows);
