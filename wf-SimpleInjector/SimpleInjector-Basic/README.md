@@ -1,4 +1,4 @@
-## Simple Injector Basic - sql server
+## Simple Injector Basic
 
 [![.NET Core](https://img.shields.io/badge/.NET%20Core-6-orange.svg)](https://dotnet.microsoft.com/download/dotnet/6.0)
 [![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2022-purple.svg)](https://visualstudio.microsoft.com/)
