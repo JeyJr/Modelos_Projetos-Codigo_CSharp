@@ -42,6 +42,15 @@
             colAtivo = new DataGridViewTextBoxColumn();
             btnPesquisarID = new Button();
             txtBoxID = new TextBox();
+            txtNome = new TextBox();
+            txtPreco = new TextBox();
+            txtDescricao = new TextBox();
+            btnPesquisaPersonalizada = new Button();
+            lblPesquisarID = new Label();
+            lblNome = new Label();
+            lblPreco = new Label();
+            lblDescricao = new Label();
+            lblStatus = new Label();
             ((System.ComponentModel.ISupportInitialize)dtgProduto).BeginInit();
             SuspendLayout();
             // 
@@ -54,6 +63,7 @@
             btnExibir.Text = "Todos Produtos";
             btnExibir.UseVisualStyleBackColor = true;
             btnExibir.Click += btnExibir_Click;
+            btnExibir.MouseClick += btnAtualizarLabelStatus_Click;
             // 
             // dtgProduto
             // 
@@ -155,6 +165,7 @@
             btnPesquisarID.Text = "Pesquisar ID";
             btnPesquisarID.UseVisualStyleBackColor = true;
             btnPesquisarID.Click += btnPesquisarID_Click;
+            btnPesquisarID.MouseClick += btnAtualizarLabelStatus_Click;
             // 
             // txtBoxID
             // 
@@ -165,11 +176,99 @@
             txtBoxID.KeyPress += txtBoxNumerosInteiros_KeyPress;
             txtBoxID.Leave += txtBoxLimitarCasasDecimais_Leave;
             // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(12, 46);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(125, 27);
+            txtNome.TabIndex = 4;
+            // 
+            // txtPreco
+            // 
+            txtPreco.Location = new Point(143, 46);
+            txtPreco.Name = "txtPreco";
+            txtPreco.Size = new Size(139, 27);
+            txtPreco.TabIndex = 5;
+            txtPreco.KeyPress += txtBoxApenasNumerosComCasasDecimais_KeyPress;
+            txtPreco.Leave += txtBoxLimitarCasasDecimais_Leave;
+            // 
+            // txtDescricao
+            // 
+            txtDescricao.Location = new Point(288, 46);
+            txtDescricao.Name = "txtDescricao";
+            txtDescricao.Size = new Size(245, 27);
+            txtDescricao.TabIndex = 6;
+            // 
+            // btnPesquisaPersonalizada
+            // 
+            btnPesquisaPersonalizada.Location = new Point(539, 46);
+            btnPesquisaPersonalizada.Name = "btnPesquisaPersonalizada";
+            btnPesquisaPersonalizada.Size = new Size(156, 29);
+            btnPesquisaPersonalizada.TabIndex = 7;
+            btnPesquisaPersonalizada.Text = "Pesquisar";
+            btnPesquisaPersonalizada.UseVisualStyleBackColor = true;
+            btnPesquisaPersonalizada.Click += btnPesquisaPersonalizada_Click;
+            btnPesquisaPersonalizada.MouseClick += btnAtualizarLabelStatus_Click;
+            // 
+            // lblPesquisarID
+            // 
+            lblPesquisarID.AutoSize = true;
+            lblPesquisarID.Location = new Point(12, 94);
+            lblPesquisarID.Name = "lblPesquisarID";
+            lblPesquisarID.Size = new Size(24, 20);
+            lblPesquisarID.TabIndex = 8;
+            lblPesquisarID.Text = "ID";
+            // 
+            // lblNome
+            // 
+            lblNome.AutoSize = true;
+            lblNome.Location = new Point(12, 23);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(50, 20);
+            lblNome.TabIndex = 9;
+            lblNome.Text = "Nome";
+            // 
+            // lblPreco
+            // 
+            lblPreco.AutoSize = true;
+            lblPreco.Location = new Point(143, 23);
+            lblPreco.Name = "lblPreco";
+            lblPreco.Size = new Size(46, 20);
+            lblPreco.TabIndex = 10;
+            lblPreco.Text = "Preço";
+            // 
+            // lblDescricao
+            // 
+            lblDescricao.AutoSize = true;
+            lblDescricao.Location = new Point(288, 23);
+            lblDescricao.Name = "lblDescricao";
+            lblDescricao.Size = new Size(74, 20);
+            lblDescricao.TabIndex = 11;
+            lblDescricao.Text = "Descrição";
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(12, 485);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(66, 20);
+            lblStatus.TabIndex = 12;
+            lblStatus.Text = "lblStatus";
+            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(707, 505);
+            Controls.Add(lblStatus);
+            Controls.Add(lblDescricao);
+            Controls.Add(lblPreco);
+            Controls.Add(lblNome);
+            Controls.Add(lblPesquisarID);
+            Controls.Add(btnPesquisaPersonalizada);
+            Controls.Add(txtDescricao);
+            Controls.Add(txtPreco);
+            Controls.Add(txtNome);
             Controls.Add(txtBoxID);
             Controls.Add(btnPesquisarID);
             Controls.Add(dtgProduto);
@@ -194,5 +293,14 @@
         private DataGridViewTextBoxColumn colPreco;
         private DataGridViewTextBoxColumn colDescricao;
         private DataGridViewTextBoxColumn colAtivo;
+        private TextBox txtNome;
+        private TextBox txtPreco;
+        private TextBox txtDescricao;
+        private Button btnPesquisaPersonalizada;
+        private Label lblPesquisarID;
+        private Label lblNome;
+        private Label lblPreco;
+        private Label lblDescricao;
+        private Label lblStatus;
     }
 }

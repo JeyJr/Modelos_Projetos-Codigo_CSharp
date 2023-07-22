@@ -1,6 +1,7 @@
 using Dapper_Basic.Base;
 using Dapper_Basic.Interfaces;
 using Dapper_Basic.Repositorio;
+using System.Text;
 
 namespace Dapper_Basic
 {
@@ -13,6 +14,31 @@ namespace Dapper_Basic
             InitializeComponent();
         }
 
+        #region Metodos
+
+        private void ExibirProdutosNoDataGrid(Produto produto, bool limparGrid = true)
+        {
+            if (limparGrid && dtgProduto.Rows.Count > 0)
+                dtgProduto.Rows.Clear();
+
+            dtgProduto.Rows.Add(
+                produto.PK_ID,
+                produto.NOME,
+                produto.VALOR,
+                produto.DESCRICAO,
+                produto.ATIVO
+                );
+
+            AtualizarLabelStatus();
+        }
+
+        private void AtualizarLabelStatus()
+        {
+            lblStatus.Text = "Rows: " + dtgProduto.Rows.Count.ToString();
+        }
+
+
+        #endregion Metodos
 
         #region Eventos
 
@@ -66,6 +92,11 @@ namespace Dapper_Basic
 
 
         //Btns
+        private void btnAtualizarLabelStatus_Click(object sender, MouseEventArgs e)
+        {
+            AtualizarLabelStatus();
+        }
+
         private void btnExibir_Click(object sender, EventArgs e)
         {
             IEnumerable<Produto> itens = produtoRepository.ObterTodosProdutos();
@@ -101,22 +132,29 @@ namespace Dapper_Basic
             //    .ForEach(p => ExibirProdutosNoDataGrid(p));
         }
 
-        private void ExibirProdutosNoDataGrid(Produto produto, bool limparGrid = true)
+        private void btnPesquisaPersonalizada_Click(object sender, EventArgs e)
         {
-            if (limparGrid && dtgProduto.Rows.Count > 0)
-                dtgProduto.Rows.Clear();
+            string nome = txtNome.Text;
+            string preco = txtPreco.Text;
+            string descricao = txtDescricao.Text;
 
-            dtgProduto.Rows.Add(
-                produto.PK_ID,
-                produto.NOME,
-                produto.VALOR,
-                produto.DESCRICAO,
-                produto.ATIVO
-                );
+            string sql = " NOME LIKE '%" + nome.Trim() + "%' ";
+
+            if (!string.IsNullOrWhiteSpace(preco) )
+                sql += "    AND VALOR = " + preco;
+
+            if (!string.IsNullOrWhiteSpace(descricao))
+                sql += "    AND DESCRICAO LIKE '%" + descricao.Trim() + "%'";
+
+            var itens = produtoRepository.ObterLista(sql);
+
+            if (itens is null)
+                return;
+
+            dtgProduto.Rows.Clear();
+            itens.OrderBy(i => i.NOME).ToList().ForEach(i => ExibirProdutosNoDataGrid(i, false));
         }
-
         #endregion Eventos
-
 
     }
 }
