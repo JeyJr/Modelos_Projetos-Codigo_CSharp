@@ -35,7 +35,7 @@
             // 
             // btnMarca
             // 
-            btnMarca.Location = new Point(25, 43);
+            btnMarca.Location = new Point(18, 59);
             btnMarca.Name = "btnMarca";
             btnMarca.Size = new Size(94, 29);
             btnMarca.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // btnCategoria
             // 
-            btnCategoria.Location = new Point(125, 43);
+            btnCategoria.Location = new Point(118, 59);
             btnCategoria.Name = "btnCategoria";
             btnCategoria.Size = new Size(94, 29);
             btnCategoria.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             // btnEmbalagem
             // 
-            btnEmbalagem.Location = new Point(225, 43);
+            btnEmbalagem.Location = new Point(218, 59);
             btnEmbalagem.Name = "btnEmbalagem";
             btnEmbalagem.Size = new Size(107, 29);
             btnEmbalagem.TabIndex = 2;
@@ -67,7 +67,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(356, 100);
+            ClientSize = new Size(338, 100);
             Controls.Add(btnEmbalagem);
             Controls.Add(btnCategoria);
             Controls.Add(btnMarca);
