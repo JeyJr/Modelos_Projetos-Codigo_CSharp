@@ -1,7 +1,7 @@
 using System.Data;
 using System.Drawing.Text;
 
-namespace wf_ComboBox_basic
+namespace wf_ComboBox_AutoComplete_Com_ListView
 {
     public partial class FrmPrincipal : Form
     {

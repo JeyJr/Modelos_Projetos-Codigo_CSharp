@@ -1,4 +1,4 @@
-﻿namespace wf_ComboBox_basic
+﻿namespace wf_ComboBox_AutoComplete_Com_ListView
 {
     partial class FrmPrincipal
     {
