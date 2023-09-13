@@ -6,6 +6,10 @@
 [![Dependency Injection](https://img.shields.io/badge/Dependency%20Injection-Simple%20Injector-blueviolet.svg)](https://simpleinjector.org/)
 ![Application Type](https://img.shields.io/badge/Application%20Type-Desktop-lightgrey.svg)
 
+### Siglas
+
+wf: windows forms
+
 ---
 
 ### Resumo
