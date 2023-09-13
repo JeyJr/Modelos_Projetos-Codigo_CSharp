@@ -5,155 +5,131 @@ namespace wf_ComboBox_basic
 {
     public partial class FrmPrincipal : Form
     {
+        DataTable dadosOriginais = new DataTable();
         public FrmPrincipal()
         {
             InitializeComponent();
         }
 
-        BindingSource bindingSource = new BindingSource();
-        private List<Produto> produtos = new List<Produto>();
-
-        private void FrmPrincipal_Load(object sender, EventArgs e)
+        #region Metodos
+        private void BindAutoComplete(string filtro)
         {
-            var dt = Tabela.ObterTabela();
+            listView1.Items.Clear();
 
-            foreach (DataRow row in dt.Rows)
+            if (filtro.Trim() == "")
             {
-                Produto produto = new Produto
-                {
-                    ID = Convert.ToInt32(row["ID"].ToString()),
-                    Nome = row["Nome"].ToString()
-                };
-
-                produtos.Add(produto);
-            }
-        }
-
-        bool teste = false;
-
-        private void cbo1_TextChanged(object sender, EventArgs e)
-        {
-            //Essa solucao faz com que o ListBox1 faca o papel do autocomplete
-            if(cbo1.Text.Length > 3) 
-            {
-                string filtro = cbo1.Text;
-
-                var itensFiltrados = produtos
-                    .Where(produto => produto.Nome.Contains(filtro))
-                    .Select(produto => produto.Nome)
-                    .ToArray();
-
-                listBox1.Items.Clear();
-                listBox1.Items.AddRange(itensFiltrados);
-            }
-        }
-
-        private void btnTeste_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Exemplo1()
-        {
-            //Exemplo utiliza um bindingSource para guardar a base original e
-            //realizar os filtros conforme o que o usuario digita
-
-            string filtro = cbo1.Text;
-            bindingSource.Filter = $"Nome LIKE '{filtro}%'";
-            IEnumerable<Produto> colecao;
-
-            if (bindingSource.Current != null)
-            {
-                DataRowView currentRow = (DataRowView)bindingSource.Current;
-
-                List<string> items = new List<string>();
-
-                foreach (DataRowView row in currentRow.DataView)
-                {
-                    items.Add(row["Nome"].ToString());
-                }
-
-                cbo1.AutoCompleteCustomSource.AddRange(items.ToArray());
-                cbo1.AutoCompleteMode = AutoCompleteMode.Suggest;
-                cbo1.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-                cbo1.Select(cbo1.Text.Length, 0);
-            }
-        }
-        private void Exemplo2()
-        {
-            if (cbo1.Text.Length >= 3)
-            {
-                string filtro = cbo1.Text;
-
-                // Filtrar a coleção de produtos com base no texto do ComboBox
-                var itensFiltrados = produtos
-                    .Where(produto => produto.Nome.Contains(filtro))
-                    .ToList();
-
-                // Atribuir os itens filtrados como DataSource do ComboBox
-                cbo1.DataSource = itensFiltrados;
-                cbo1.DisplayMember = "Nome";
-                cbo1.ValueMember = "ID";
-
-                // Exibir a lista suspensa do ComboBox
-                cbo1.DroppedDown = true;
-            }
-        }
-        private void Exemplo3()
-        {
-            string filtro = cbo1.Text;
-
-            if (filtro.Length < 3)
-            {
-                // Desativar o AutoComplete personalizado
-                cbo1.AutoCompleteMode = AutoCompleteMode.None;
-                cbo1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                dadosOriginais.Rows
+                .OfType<DataRow>()
+                .ToList()
+                .ForEach(item => listView1.Items.Add(item["Nome"].ToString().ToLower().Trim()));
             }
             else
             {
-                // Ativar o AutoComplete personalizado
-                cbo1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                dadosOriginais.Rows
+                .OfType<DataRow>()
+                .ToList()
+                .ForEach(item =>
+                {
+                    string n = item["Nome"].ToString().ToLower().Trim();
+                    string f = filtro.ToLower().Trim();
 
-                // Filtrar a coleção de produtos com base no texto do ComboBox
-                var itensFiltrados = produtos
-                    .Where(produto => produto.Nome.Contains(filtro))
-                    .Select(produto => produto.Nome)
-                    .ToArray();
-
-                // Configure o AutoCompleteCustomSource com os itens filtrados
-                var autoCompleteCollection = new AutoCompleteStringCollection();
-                autoCompleteCollection.AddRange(itensFiltrados);
-                cbo1.AutoCompleteCustomSource = autoCompleteCollection;
-
-                cbo1.DroppedDown = true;
+                    if (n.Contains(f))
+                    {
+                        listView1.Items.Add(item["Nome"].ToString());
+                    }
+                });
             }
 
+            listView1.Visible = listView1.Items.Count > 0;
         }
-        private void Exemplo4()
+        private void SelecionarItemDoAutoComplete()
         {
-            List<string> sugestoesPersonalizadas = new List<string>
+            if (listView1.SelectedItems != null)
+            {
+                string itemSelecionado = listView1.SelectedItems[0].Text;
+                int indice = comboBox1.FindString(itemSelecionado);
+
+                if (indice != -1)
                 {
-                    "Sugestão 1",
-                    "Sugestão 2",
-                    "Sugestão 3"
-                    // Adicione suas sugestões personalizadas aqui
-                };
-
-            AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
-            // Criar uma coleção de sugestões personalizadas
-            autoCompleteCollection.AddRange(sugestoesPersonalizadas.ToArray());
-            // Configurar o AutoCompleteCustomSource com a coleção personalizada
-            cbo1.AutoCompleteCustomSource = autoCompleteCollection;
-
-            cbo1.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cbo1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    comboBox1.SelectedIndex = indice;
+                    listView1.Visible = false;
+                }
+            }
         }
-    }
-}
+        #endregion Metodos
 
-class Produto
-{
-    public int ID { get; set; }
-    public string Nome { get; set; }
+        #region Eventos
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            dadosOriginais = Tabela.ObterTabela();
+
+            comboBox1.DataSource = dadosOriginais;
+            comboBox1.ValueMember = "ID";
+            comboBox1.DisplayMember = "Nome";
+
+            comboBox1.Text = "";
+        }
+        /* comboBox */
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text.Length > 0)
+            {
+                BindAutoComplete(comboBox1.Text);
+            }
+            else
+            {
+                listView1.Visible = false;
+            }
+        }
+        private void comboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            /* Não permite navegar nos items do comboBox */
+            /* A "Navegação" só será permitida no ListViewr */
+
+            if (e.KeyCode == Keys.Up)
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                if (listView1.Items.Count > 0 && listView1.Visible)
+                {
+                    listView1.Focus();
+                    listView1.Items[0].Selected = true;
+                }
+
+                e.Handled = true;
+            }
+        }
+        private void comboBox1_Leave(object sender, EventArgs e)
+        {
+            if (!listView1.Focused && !comboBox1.Focused)
+                listView1.Visible = false;
+        }
+
+        /* listView */
+        private void listView1_Click(object sender, EventArgs e)
+        {
+            SelecionarItemDoAutoComplete();
+        }
+        private void listView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            /* Quando chegar no indice 0 retorna para o comboBox */
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelecionarItemDoAutoComplete();
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                if (listView1.Items.Count > 0 && listView1.Items[0].Selected)
+                {
+                    comboBox1.Focus();
+                    comboBox1.Select(comboBox1.Text.Length, 0);
+                }
+            }
+        }
+        #endregion Eventos
+
+    }
 }

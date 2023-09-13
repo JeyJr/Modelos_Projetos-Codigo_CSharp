@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cbo1 = new ComboBox();
-            btnTeste = new Button();
-            listBox1 = new ListBox();
+            comboBox1 = new ComboBox();
+            listView1 = new ListView();
             SuspendLayout();
             // 
-            // cbo1
+            // comboBox1
             // 
-            cbo1.FormattingEnabled = true;
-            cbo1.Location = new Point(12, 41);
-            cbo1.Name = "cbo1";
-            cbo1.Size = new Size(371, 23);
-            cbo1.TabIndex = 0;
-            cbo1.TextChanged += cbo1_TextChanged;
+            comboBox1.DropDownHeight = 1;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.IntegralHeight = false;
+            comboBox1.Location = new Point(12, 41);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(371, 23);
+            comboBox1.TabIndex = 0;
+            comboBox1.TextChanged += comboBox1_TextChanged;
+            comboBox1.KeyDown += comboBox1_KeyDown;
+            comboBox1.Leave += comboBox1_Leave;
             // 
-            // btnTeste
+            // listView1
             // 
-            btnTeste.Location = new Point(283, 188);
-            btnTeste.Name = "btnTeste";
-            btnTeste.Size = new Size(75, 23);
-            btnTeste.TabIndex = 1;
-            btnTeste.Text = "Teste";
-            btnTeste.UseVisualStyleBackColor = true;
-            btnTeste.Click += btnTeste_Click;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(12, 64);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(371, 94);
-            listBox1.TabIndex = 2;
+            listView1.Activation = ItemActivation.OneClick;
+            listView1.HotTracking = true;
+            listView1.HoverSelection = true;
+            listView1.Location = new Point(12, 64);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(371, 260);
+            listView1.TabIndex = 2;
+            listView1.TileSize = new Size(370, 15);
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Tile;
+            listView1.Visible = false;
+            listView1.Click += listView1_Click;
+            listView1.KeyDown += listView1_KeyDown;
             // 
             // FrmPrincipal
             // 
@@ -67,9 +67,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 64, 64);
             ClientSize = new Size(395, 336);
-            Controls.Add(listBox1);
-            Controls.Add(btnTeste);
-            Controls.Add(cbo1);
+            Controls.Add(listView1);
+            Controls.Add(comboBox1);
             Name = "FrmPrincipal";
             Text = "Principal";
             Load += FrmPrincipal_Load;
@@ -78,8 +77,7 @@
 
         #endregion
 
-        private ComboBox cbo1;
-        private Button btnTeste;
-        private ListBox listBox1;
+        private ComboBox comboBox1;
+        private ListView listView1;
     }
 }
