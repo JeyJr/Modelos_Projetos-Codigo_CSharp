@@ -34,6 +34,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
             comboBox1.DropDownHeight = 1;
             comboBox1.FormattingEnabled = true;
             comboBox1.IntegralHeight = false;
@@ -41,6 +42,8 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(371, 23);
             comboBox1.TabIndex = 0;
+            comboBox1.DropDown += comboBox1_DropDown;
+            comboBox1.DropDownClosed += comboBox1_DropDownClosed;
             comboBox1.TextChanged += comboBox1_TextChanged;
             comboBox1.KeyDown += comboBox1_KeyDown;
             comboBox1.Leave += comboBox1_Leave;
@@ -50,7 +53,7 @@
             listView1.Activation = ItemActivation.OneClick;
             listView1.HotTracking = true;
             listView1.HoverSelection = true;
-            listView1.Location = new Point(12, 64);
+            listView1.Location = new Point(12, 105);
             listView1.Name = "listView1";
             listView1.Size = new Size(371, 260);
             listView1.TabIndex = 2;
@@ -66,10 +69,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 64, 64);
-            ClientSize = new Size(395, 336);
+            ClientSize = new Size(395, 452);
             Controls.Add(listView1);
             Controls.Add(comboBox1);
             Name = "FrmPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Principal";
             Load += FrmPrincipal_Load;
             ResumeLayout(false);

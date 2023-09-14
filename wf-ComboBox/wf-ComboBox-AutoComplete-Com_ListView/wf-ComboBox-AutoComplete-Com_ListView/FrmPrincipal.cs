@@ -6,22 +6,29 @@ namespace wf_ComboBox_AutoComplete_Com_ListView
     public partial class FrmPrincipal : Form
     {
         DataTable dadosOriginais = new DataTable();
+
+        string textDigitado = "";
+        bool dropdownAberto = false;
+        private int ID = 0;
+        private string Nome = "";
+
         public FrmPrincipal()
         {
             InitializeComponent();
         }
 
         #region Metodos
-        private void BindAutoComplete(string filtro)
+        private void BindAutoComplete()
         {
             listView1.Items.Clear();
+            string filtro = comboBox1.Text.Trim();
 
             if (filtro.Trim() == "")
             {
                 dadosOriginais.Rows
                 .OfType<DataRow>()
                 .ToList()
-                .ForEach(item => listView1.Items.Add(item["Nome"].ToString().ToLower().Trim()));
+                .ForEach(item => listView1.Items.Add(item["Nome"].ToString()));
             }
             else
             {
@@ -39,22 +46,36 @@ namespace wf_ComboBox_AutoComplete_Com_ListView
                     }
                 });
             }
-
-            listView1.Visible = listView1.Items.Count > 0;
         }
         private void SelecionarItemDoAutoComplete()
         {
             if (listView1.SelectedItems != null)
             {
                 string itemSelecionado = listView1.SelectedItems[0].Text;
-                int indice = comboBox1.FindString(itemSelecionado);
+                comboBox1.Text = itemSelecionado;
+                //int indice = comboBox1.FindString(itemSelecionado);
 
-                if (indice != -1)
+                foreach (DataRow row in dadosOriginais.Rows)
                 {
-                    comboBox1.SelectedIndex = indice;
-                    listView1.Visible = false;
+                    if (row["Nome"].ToString() == itemSelecionado)
+                    {
+                        ID = Convert.ToInt32(row["ID"].ToString());
+                        Nome = row["Nome"].ToString();
+
+                        break;
+                    }
                 }
+                FecharAutoComplete();
             }
+        }
+        private void ExibirAutoComplete()
+        {
+            BindAutoComplete();
+            listView1.Visible = true;
+        }
+        private void FecharAutoComplete()
+        {
+            listView1.Visible = false;
         }
         #endregion Metodos
 
@@ -68,17 +89,41 @@ namespace wf_ComboBox_AutoComplete_Com_ListView
             comboBox1.DisplayMember = "Nome";
 
             comboBox1.Text = "";
+
+            //this.Click += FecharAutoComplete_Click;
         }
+        private void FecharAutoComplete_Click(object sender, EventArgs e)
+        {
+            FecharAutoComplete();
+        }
+
         /* comboBox */
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
             if (comboBox1.Text.Length > 0)
             {
-                BindAutoComplete(comboBox1.Text);
+                if (dropdownAberto)
+                {
+                    textDigitado = comboBox1.Text;
+                    comboBox1.Text = "";
+                    comboBox1.DropDownHeight = 1;
+                    comboBox1.DroppedDown = false;
+
+                    if (comboBox1.SelectedItem == null)
+                    {
+                        comboBox1.Text = textDigitado;
+                        comboBox1.Select(comboBox1.Text.Length, 0);
+                        ExibirAutoComplete();
+                    }
+                }
+                else
+                {
+                    ExibirAutoComplete();
+                }
             }
             else
             {
-                listView1.Visible = false;
+                FecharAutoComplete();
             }
         }
         private void comboBox1_KeyDown(object sender, KeyEventArgs e)
@@ -92,6 +137,8 @@ namespace wf_ComboBox_AutoComplete_Com_ListView
             }
             else if (e.KeyCode == Keys.Down)
             {
+                ExibirAutoComplete();
+
                 if (listView1.Items.Count > 0 && listView1.Visible)
                 {
                     listView1.Focus();
@@ -103,8 +150,21 @@ namespace wf_ComboBox_AutoComplete_Com_ListView
         }
         private void comboBox1_Leave(object sender, EventArgs e)
         {
-            if (!listView1.Focused && !comboBox1.Focused)
-                listView1.Visible = false;
+            //if (!listView1.Focused && !comboBox1.Focused)
+            //    FecharAutoComplete();
+        }
+        private void comboBox1_DropDown(object sender, EventArgs e)
+        {
+            FecharAutoComplete();
+            comboBox1.DropDownHeight = 140;
+            
+            dropdownAberto = true;
+        }
+        private void comboBox1_DropDownClosed(object sender, EventArgs e)
+        {
+            comboBox1.DropDownHeight = 1;
+
+            dropdownAberto = false;
         }
 
         /* listView */
@@ -126,10 +186,15 @@ namespace wf_ComboBox_AutoComplete_Com_ListView
                 {
                     comboBox1.Focus();
                     comboBox1.Select(comboBox1.Text.Length, 0);
+
+                    if (comboBox1.Text.Length <= 0)
+                    {
+                        FecharAutoComplete();
+                    }
                 }
             }
         }
-        #endregion Eventos
 
+        #endregion Eventos
     }
 }
