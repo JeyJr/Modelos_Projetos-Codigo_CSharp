@@ -118,7 +118,8 @@ namespace wf_ComboBox_AutoComplete_Com_ListView
                 }
                 else
                 {
-                    ExibirAutoComplete();
+                    if (comboBox1.SelectedItem == null)
+                        ExibirAutoComplete();
                 }
             }
             else
