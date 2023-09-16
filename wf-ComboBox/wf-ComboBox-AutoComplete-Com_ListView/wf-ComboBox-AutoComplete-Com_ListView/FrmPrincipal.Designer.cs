@@ -53,9 +53,9 @@
             listView1.Activation = ItemActivation.OneClick;
             listView1.HotTracking = true;
             listView1.HoverSelection = true;
-            listView1.Location = new Point(12, 105);
+            listView1.Location = new Point(12, 64);
             listView1.Name = "listView1";
-            listView1.Size = new Size(371, 260);
+            listView1.Size = new Size(371, 167);
             listView1.TabIndex = 2;
             listView1.TileSize = new Size(370, 15);
             listView1.UseCompatibleStateImageBehavior = false;

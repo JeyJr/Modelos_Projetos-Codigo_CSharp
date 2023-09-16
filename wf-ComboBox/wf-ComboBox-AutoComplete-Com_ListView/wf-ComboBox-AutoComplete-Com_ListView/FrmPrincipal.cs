@@ -158,7 +158,7 @@ namespace wf_ComboBox_AutoComplete_Com_ListView
         {
             FecharAutoComplete();
             comboBox1.DropDownHeight = 140;
-            
+
             dropdownAberto = true;
         }
         private void comboBox1_DropDownClosed(object sender, EventArgs e)
