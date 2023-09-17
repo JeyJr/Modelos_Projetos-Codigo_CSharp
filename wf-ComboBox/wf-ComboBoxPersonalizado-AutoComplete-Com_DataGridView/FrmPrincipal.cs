@@ -5,12 +5,17 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
 {
     public partial class FrmPrincipal : Form
     {
-        AutoCompleteCboPersonalizado autoCompleteCboPersonalizado = new AutoCompleteCboPersonalizado();
+        AutoCompleteComboBoxPersonalizado autoCompleteCboPersonalizado = new AutoCompleteComboBoxPersonalizado();
         public FrmPrincipal()
         {
             InitializeComponent();
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            AutoComplete();
+            autoCompleteCboPersonalizado.AtribuirDataSource(Tabela.ObterTabela(), false);
+        }
+        private void AutoComplete()
         {
             autoCompleteCboPersonalizado.AtribuirComboBox(
                 this,
@@ -37,12 +42,8 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
                         ReadOnly = true,
                        }
                 },
-                cboPersonalizado.Size.Width,
-                150);
-
-
+                cboPersonalizado.Size.Width, 150, "colNomeItem");
         }
-
         private void txtCboPersonalizado_TextChanged(object sender, EventArgs e)
         {
             if (txtCboPersonalizado.Text.Length > 0)
@@ -66,11 +67,11 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
                         }
                     });
 
-                autoCompleteCboPersonalizado.AtribuirDataSource(dt);
+                autoCompleteCboPersonalizado.AtribuirDataSource(dt, true);
             }
             else
             {
-                autoCompleteCboPersonalizado.AtribuirDataSource(Tabela.ObterTabela());
+                autoCompleteCboPersonalizado.AtribuirDataSource(Tabela.ObterTabela(), true);
             }
         }
     }
