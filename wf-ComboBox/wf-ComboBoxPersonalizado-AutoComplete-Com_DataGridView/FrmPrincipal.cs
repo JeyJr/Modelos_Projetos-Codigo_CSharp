@@ -74,10 +74,5 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
                 autoCompleteCboPersonalizado.AtribuirDataSource(Tabela.ObterTabela(), true);
             }
         }
-
-        private void txtCboPersonalizado_Leave(object sender, EventArgs e)
-        {
-            autoCompleteCboPersonalizado.FecharGrid();
-        }
     }
 }

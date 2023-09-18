@@ -60,7 +60,7 @@
             txtCboPersonalizado.Name = "txtCboPersonalizado";
             txtCboPersonalizado.Size = new Size(257, 23);
             txtCboPersonalizado.TabIndex = 1;
-            txtCboPersonalizado.Leave += txtCboPersonalizado_Leave;
+            txtCboPersonalizado.TextChanged += txtCboPersonalizado_TextChanged;
             // 
             // btnCboPersonalizado
             // 

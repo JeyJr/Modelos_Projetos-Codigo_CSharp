@@ -16,9 +16,8 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
         private DataGridViewCellStyle estiloOriginalDaCelula;
         private DataGridView dataGridView1;
 
-        /// <summary>
-        /// Nome da coluna que será exibida no textBox
-        /// </summary>
+
+        // Nome da coluna que será exibida no textBox
         private string NomeDaColuna = "";
         public AutoCompleteComboBoxPersonalizado()
         {
@@ -48,7 +47,9 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
             dataGridView1.Show();
             dataGridView1.Visible = true;
             NomeDaColuna = nomeDaColuna;
+
             this.btnCboPersonalizado.Click += btnCboPersonalizado_Click;
+            this.txtCboPersonalizado.KeyDown += txtCboPersonalizado_KeyDown;
         }
         private void ContruirDataGrid()
         {
@@ -109,6 +110,8 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellMouseEnter += dataGridView1_CellMouseEnter;
             dataGridView1.CellMouseLeave += dataGridView1_CellMouseLeave;
+            dataGridView1.LostFocus += FecharDataGridView;
+            dataGridView1.KeyDown += dataGridView1_KeyDown;
         }
         public void AtribuirDataSource(DataTable dataSource)
         {
@@ -121,6 +124,7 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
         }
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
+            //Efeito: MouseHover, muda cor da linha
             if (e.RowIndex >= 0)
             {
                 DataGridViewCellStyle novoEstilo = new DataGridViewCellStyle
@@ -160,9 +164,49 @@ namespace wf_ComboBoxPersonalizado_AutoComplete_Com_ListView
                 dataGridView1.Visible = false;
             }
         }
-        public void FecharGrid()
+        private void FecharDataGridView(object sender, EventArgs e)
         {
             dataGridView1.Visible = false;
+        }
+
+        private void txtCboPersonalizado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dataGridView1.Rows.Count <= 0)
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                dataGridView1.Focus();
+                dataGridView1.Visible = true;
+                dataGridView1.Rows[0].Selected = true;
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dataGridView1.Rows.Count <= 0)
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyCode == Keys.Up && dataGridView1.Rows[0].Selected)
+            {
+                this.txtCboPersonalizado.Focus();
+                this.txtCboPersonalizado.Select(txtCboPersonalizado.Text.Length, 0);
+            }
+
+            if (e.KeyCode == Keys.Enter ||  e.KeyCode == Keys.Space) 
+            {
+                if (dataGridView1 != null && dataGridView1.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                    this.txtCboPersonalizado.Text = selectedRow.Cells[NomeDaColuna].Value as string;
+                    this.txtCboPersonalizado.Focus();
+                    this.txtCboPersonalizado.Select(txtCboPersonalizado.Text.Length, 0);
+                }
+            }
         }
     }
 }
