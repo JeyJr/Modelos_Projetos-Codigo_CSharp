@@ -8,18 +8,7 @@
       "sslPort": 44312
     }
   },
-  //"profiles": {
-  //  "AspNet_Api_ModeloBase": {
-  //    "commandName": "Project",
-  //    "dotnetRunMessages": true,
-  //    "launchBrowser": false,
-  //    "launchUrl": "swagger",
-  //    "applicationUrl": "https://localhost:7144;http://localhost:5176",
-  //    "environmentVariables": {
-  //      "ASPNETCORE_ENVIRONMENT": "Development"
-  //    }
-  //  },
-  "profiles": {
+   "profiles": {
     "AspNet_Api_ModeloBase": {
       "commandName": "Project",
       "dotnetRunMessages": true,
