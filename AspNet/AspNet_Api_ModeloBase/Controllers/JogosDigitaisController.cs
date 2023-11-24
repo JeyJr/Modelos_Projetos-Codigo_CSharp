@@ -9,48 +9,33 @@ namespace AspNet_Api_ModeloBase.Controllers
     public class JogosDigitaisController : ControllerBase
     {
         private static List<Jogo> jogos = new List<Jogo>();
+        private static int id = 0;
 
         [HttpPost]
         public void AdicionarJogo([FromBody] Jogo jogo)
         {
-            try
-            {
-                if (jogo == null)
-                    throw new Exception("Objeto nulo inválido!");
+            jogo.Id = id++;
 
-                if (jogo.Titulo.Length > 100 || jogo.Titulo.Length <= 0)
-                    throw new Exception("Título inválido!");
-
-                if (jogo.Genero.Length > 50 || jogo.Genero.Length <= 0)
-                    throw new Exception("Gênero inválido!");
-
-                jogos.Add(jogo);
-                Console.WriteLine(jogo.Titulo);
-                Console.WriteLine(jogo.Genero);
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
+            jogos.Add(jogo);
+            Console.WriteLine(jogo.Titulo);
+            Console.WriteLine(jogo.Genero);
         }
 
         [HttpGet]
         public Jogo ObterJogo([FromBody] Jogo jogo)
         {
-            try
-            {
-                var jogoEncontrado = jogos.Find(j => j.Titulo == jogo.Titulo);
+            var jogoEncontrado = jogos.Find(j => j.Titulo == jogo.Titulo);
 
-                if (jogoEncontrado != null)
-                    return jogoEncontrado;
-                else
-                    throw new Exception("Jogo não encontrado");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            if (jogoEncontrado != null)
+                return jogoEncontrado;
+            else
+                return new Jogo();
         }
+
+        //[HttpGet]
+        //public IEnumerable<Jogo> ObterLista()
+        //{
+        //    return jogos;
+        //}
     }
 }
