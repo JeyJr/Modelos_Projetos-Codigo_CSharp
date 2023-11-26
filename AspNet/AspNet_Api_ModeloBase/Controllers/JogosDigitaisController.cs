@@ -11,6 +11,7 @@ namespace AspNet_Api_ModeloBase.Controllers
         private static List<Jogo> jogos = new List<Jogo>();
         private static int id = 0;
 
+        //Exemplo basico dos metodos Get e Post
         [HttpPost]
         public void AdicionarJogo([FromBody] Jogo jogo)
         {
@@ -32,10 +33,10 @@ namespace AspNet_Api_ModeloBase.Controllers
                 return new Jogo();
         }
 
-        //[HttpGet]
-        //public IEnumerable<Jogo> ObterLista()
-        //{
-        //    return jogos;
-        //}
+        [HttpGet("{id}")]
+        public Jogo? ObterJogo(int id)
+        {
+            return jogos.FirstOrDefault(jogos => jogos.Id == id);
+        }
     }
 }
