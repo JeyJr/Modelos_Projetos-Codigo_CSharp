@@ -11,13 +11,14 @@ namespace AspNet_Api_ModeloBase.Controllers
         private static int id = 0;
 
         [HttpPost]
-        public void AdicionarJogo([FromBody] Filme filme)
+        public IActionResult AdicionaFilme([FromBody] Filme filme)
         {
             filme.Id = id++;
-
             filmes.Add(filme);
-            Console.WriteLine(filme.Titulo);
-            Console.WriteLine(filme.Genero);
+
+            return CreatedAtAction(nameof(ObterFilme),
+                    new { id = filme.Id },
+                    filme);
 
             //Postman teste, body (raw)
             //https://localhost:7106/Filmes
@@ -26,7 +27,6 @@ namespace AspNet_Api_ModeloBase.Controllers
             //    "Genero" : "Ação"
             //}
         }
-
 
         [HttpGet]
         public IEnumerable<Filme> ObterFilmes(int skip = 0, int take = 50)
@@ -38,9 +38,14 @@ namespace AspNet_Api_ModeloBase.Controllers
         }
 
         [HttpGet("{id}")]
-        public Filme? ObterFilme(int id)
+        public IActionResult ObterFilme(int id)
         {
-            return filmes.FirstOrDefault(filme => filme.Id == id);
+            var filme = filmes.FirstOrDefault(filme => filme.Id == id);
+
+            if (filme == null) 
+                return NotFound();
+
+            return Ok(filme);
 
             //Postman exemplo de url: https://localhost:7106/Filmes/2
             //id seria o valor após Filmes/  
