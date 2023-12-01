@@ -1,3 +1,7 @@
+using AspNet_Api_ModeloBase.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
+
 namespace AspNet_Api_ModeloBase
 {
     public class Program
@@ -6,7 +10,10 @@ namespace AspNet_Api_ModeloBase
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            var connectionString = builder.Configuration.GetConnectionString("JJConnection");
+
+            builder.Services.AddDbContext<FilmeContext>(opts =>
+            opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
