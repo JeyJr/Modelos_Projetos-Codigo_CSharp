@@ -1,8 +1,0 @@
-
-* text=auto
-
-
-#*.cs     diff=csharp
-#*.sql     diff=sql
-
-
