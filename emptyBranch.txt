@@ -1,0 +1,5 @@
+-> Add recurso no repositorio
+-> Add new branch
+-> Obter Alterações da empty Branch
+-> Comitar tudo
+-> Finalizar com Merge
