@@ -1,16 +1,12 @@
 ## Modelos de projetos <codigos> CSharp
 
-[![.NET Core](https://img.shields.io/badge/.NET%20Core-6-orange.svg)](https://dotnet.microsoft.com/download/dotnet/6.0)
-[![Visual Studio](https://img.shields.io/badge/Visual%20Studio-2022-purple.svg)](https://visualstudio.microsoft.com/)
-![SQL Server](https://img.shields.io/badge/Database-SQL%20Server-blue.svg)
-[![Dependency Injection](https://img.shields.io/badge/Dependency%20Injection-Simple%20Injector-blueviolet.svg)](https://simpleinjector.org/)
-![Application Type](https://img.shields.io/badge/Application%20Type-Desktop-lightgrey.svg)
+[![.NET Core](https://img.shields.io/badge/.NET%20Core-orange.svg)](https://dotnet.microsoft.com)
+[![Visual Studio](https://img.shields.io/badge/Visual%20Studio%202022-purple.svg)](https://visualstudio.microsoft.com/)
+![MAUI](https://img.shields.io/badge/Maui-blue.svg)
+![Windows Forms](https://img.shields.io/badge/WindowsForms-blue.svg)
+![AspNet](https://img.shields.io/badge/AspNet-blue.svg)
+[![Dependency Injection](https://img.shields.io/badge/Simple%20Injector-blueviolet.svg)](https://simpleinjector.org/)
 
-### Siglas
-
-wf: windows forms
-
----
 
 ### Resumo
 
