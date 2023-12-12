@@ -50,12 +50,12 @@ public partial class MainPage : ContentPage
             }
         }
 
-        luckNumber01.Text = numbers[0] <= 9 ? $"0{numbers[0]}" : numbers[0].ToString();
-        luckNumber02.Text = numbers[1] <= 9 ? $"0{numbers[1]}" : numbers[1].ToString();
-        luckNumber03.Text = numbers[2] <= 9 ? $"0{numbers[2]}" : numbers[2].ToString();
-        luckNumber04.Text = numbers[3] <= 9 ? $"0{numbers[3]}" : numbers[3].ToString();
-        luckNumber05.Text = numbers[4] <= 9 ? $"0{numbers[4]}" : numbers[4].ToString();
-        luckNumber06.Text = numbers[5] <= 9 ? $"0{numbers[5]}" : numbers[5].ToString();
+        luckNumber01.Text = numbers[0].ToString("D2");
+        luckNumber02.Text = numbers[1].ToString("D2");
+        luckNumber03.Text = numbers[2].ToString("D2");
+        luckNumber04.Text = numbers[3].ToString("D2");
+        luckNumber05.Text = numbers[4].ToString("D2");
+        luckNumber06.Text = numbers[5].ToString("D2");
     }
     #endregion
 
