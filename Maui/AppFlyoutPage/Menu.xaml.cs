@@ -11,7 +11,7 @@ public partial class Menu : ContentPage
     {
         if (App.Current.MainPage is FlyoutPage flyout && flyout != null)
         {
-            flyout.Detail = new Page1();
+            flyout.Detail = new NavigationPage(new Page1());
         }
     }
 
@@ -19,7 +19,7 @@ public partial class Menu : ContentPage
     {
         if(App.Current.MainPage is FlyoutPage flyout && flyout != null)
         {
-            flyout.Detail = new Page2();
+            flyout.Detail = new NavigationPage(new Page2());
         }
     }
 
@@ -27,7 +27,7 @@ public partial class Menu : ContentPage
     {
         if (App.Current.MainPage is FlyoutPage flyout && flyout != null)
         {
-            flyout.Detail = new Page3();
+            flyout.Detail = new NavigationPage(new Page3());
         }
     }
 }

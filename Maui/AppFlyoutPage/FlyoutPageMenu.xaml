@@ -8,9 +8,15 @@
     FlyoutLayoutBehavior="Popover">
 
     <FlyoutPage.Flyout>
+        <!-- Página de Menu -->
         <page:Menu />
     </FlyoutPage.Flyout>
     <FlyoutPage.Detail>
-        <page:Page1 />
+        <!-- Contéudo central -->
+        <NavigationPage>
+            <x:Arguments>
+                <page:Page1 />
+            </x:Arguments>
+        </NavigationPage>
     </FlyoutPage.Detail>
 </FlyoutPage>
