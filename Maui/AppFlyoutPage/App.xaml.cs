@@ -1,4 +1,4 @@
-﻿namespace FlyoutPage
+﻿namespace AppFlyoutPage
 {
     public partial class App : Application
     {
@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new FlyoutPageMenu();
         }
     }
 }

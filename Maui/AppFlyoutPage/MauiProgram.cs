@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace FlyoutPage
+namespace AppFlyoutPage
 {
     public static class MauiProgram
     {

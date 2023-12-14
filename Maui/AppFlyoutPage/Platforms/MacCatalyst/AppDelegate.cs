@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace FlyoutPage
+namespace AppFlyoutPage
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

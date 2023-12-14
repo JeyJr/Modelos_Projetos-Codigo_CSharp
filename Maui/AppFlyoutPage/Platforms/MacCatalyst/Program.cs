@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace FlyoutPage
+namespace AppFlyoutPage
 {
     public class Program
     {

@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace FlyoutPage
+namespace AppFlyoutPage
 {
     [Application]
     public class MainApplication : MauiApplication
