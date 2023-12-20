@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage
-    x:Class="AppTabbedPage.TabbedPageMenu"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:AppTabbedPage"
-    Title="TabbedPageMenu">
+    xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+    
+    x:Class="AppTabbedPage.TabbedPageMenu"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    
+    Title="TabbedPageMenu"
+    BarBackgroundColor="#460808"
+    SelectedTabColor="#8A0005" 
+    FlowDirection="LeftToRight" 
+    UnselectedTabColor="#3C0000" 
+    FlexLayout.AlignSelf="Center" Visual="Default">
 
     <pages:Page1 />
     <pages:Page2 />
