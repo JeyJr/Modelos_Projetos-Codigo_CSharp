@@ -1,4 +1,4 @@
-namespace AppGallery;
+namespace AppGallery.Views;
 
 public partial class MainPage : ContentPage
 {
