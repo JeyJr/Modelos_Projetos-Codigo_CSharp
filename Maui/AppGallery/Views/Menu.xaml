@@ -5,16 +5,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Menu"
     Loaded="ContentPage_Loaded">
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="2">
         <Label
+            Margin="25"
+            FontFamily="Roboto-Bold"
+            FontSize="24"
             HorizontalOptions="Center"
-            Text="NET MAUI - Gallery"
+            Text="MAUI - Gallery"
             VerticalOptions="Center" />
 
-        <Label Text="Início" />
-        <Label Text="Extra" />
-        <Label Text="Créditos" />
+        <StackLayout x:Name="MainButtons" Margin="50, 0" Spacing="20">
+            <Label Text="Início" />
+            <Label Text="Extra" />
+            <Label Text="Créditos" />
+        </StackLayout>
 
-        <VerticalStackLayout x:Name="MenuContainer" />
+        <StackLayout x:Name="MenuContainer" Margin="30, 35" />
     </VerticalStackLayout>
 </ContentPage>

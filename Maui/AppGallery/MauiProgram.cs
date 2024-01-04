@@ -13,6 +13,7 @@ namespace AppGallery
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Roboto-Bold.ttf", "Roboto-Bold");
                 });
 
 #if DEBUG

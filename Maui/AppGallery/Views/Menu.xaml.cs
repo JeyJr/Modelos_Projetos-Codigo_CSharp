@@ -35,13 +35,35 @@ public partial class Menu : ContentPage
 
 			foreach (var categoria in categoriaCollection)
 			{
-				var lblCategoria = new Label() { Text = categoria.Name };
+				//Título do agrupamento
+				var lblCategoria = new Label() 
+				{ 
+					Text = categoria.Name,
+					FontFamily = "Roboto-Bold",
+					FontSize = 18,
+				};
+
 				MenuContainer.Children.Add(lblCategoria);
+
+
 
 				foreach (var componente in categoria.Components)
 				{
-					var lblComponenteTitle = new Label() { Text = componente.Title };
-					var lblComponenteDescription = new Label() { Text = componente.Description };
+					var lblComponenteTitle = new Label() 
+					{ 
+						Text = componente.Title, 
+						FontFamily = "OpenSansSemibold", 
+						FontSize = 15,
+						Margin = new Thickness(15, 15, 15, 5) 
+					};
+
+					var lblComponenteDescription = new Label() 
+					{ 
+						Text = componente.Description, 
+						FontFamily = "OpenSansRegular",
+						FontSize = 11,
+						Margin = new Thickness(15, 0, 15, 25) 
+					};
 
                     MenuContainer.Children.Add(lblComponenteTitle);
                     MenuContainer.Children.Add(lblComponenteDescription);
