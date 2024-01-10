@@ -76,6 +76,11 @@ public partial class Menu : ContentPage
 			DisplayAlert("Error", ex.Message, "Cancelar");
 		}
 	}
-	#endregion
+    #endregion
 
+    private void lblInicio_Tapped(object sender, TappedEventArgs e)
+    {
+		((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage(new AppGallery.Views.MainPage());
+        ((FlyoutPage)App.Current.MainPage).IsPresented = false;
+    }
 }
