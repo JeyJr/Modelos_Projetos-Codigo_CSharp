@@ -6,28 +6,31 @@
     Title="Menu"
     BackgroundColor="#f3f3f3"
     Loaded="ContentPage_Loaded">
-    <VerticalStackLayout Spacing="2">
-        <Label
-            Margin="25"
-            FontFamily="Roboto-Bold"
-            FontSize="24"
-            HorizontalOptions="Center"
-            Text="MAUI - Gallery"
-            VerticalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Spacing="2">
+            <Label
+                Margin="25"
+                FontFamily="Roboto-Bold"
+                FontSize="24"
+                TextColor="#2F2F2F"
+                HorizontalOptions="Center"
+                Text="MAUI - Gallery"
+                VerticalOptions="Center" />
 
-        <StackLayout
-            x:Name="MainButtons"
-            Margin="50,0"
-            Spacing="20">
-            <Label x:Name="lblInicio" Text="Início">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="lblInicio_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-            <Label Text="Extra" />
-            <Label Text="Créditos" />
-        </StackLayout>
+            <StackLayout
+                x:Name="MainButtons"
+                Margin="50,0"
+                Spacing="20">
+                <Label x:Name="lblInicio" Text="Início">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="lblInicio_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Extra" />
+                <Label Text="Créditos" />
+            </StackLayout>
 
-        <StackLayout x:Name="MenuContainer" Margin="30,35" />
-    </VerticalStackLayout>
+            <StackLayout x:Name="MenuContainer" Margin="30,35" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

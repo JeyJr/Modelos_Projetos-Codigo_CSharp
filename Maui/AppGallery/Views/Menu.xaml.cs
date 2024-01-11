@@ -1,5 +1,6 @@
 using AppGallery.Models;
 using AppGallery.Repositories;
+using AppGallery.Views.Layouts;
 
 namespace AppGallery.Views;
 
@@ -65,6 +66,16 @@ public partial class Menu : ContentPage
 						Margin = new Thickness(15, 0, 15, 25) 
 					};
 
+
+					var tap = new TapGestureRecognizer();
+					/* Passar um objeto no tap */
+					tap.CommandParameter = componente.Page;
+					tap.Tapped += labelsCategoria_Tapped;
+
+
+					lblComponenteTitle.GestureRecognizers.Add(tap);
+					lblComponenteDescription.GestureRecognizers.Add(tap);
+
                     MenuContainer.Children.Add(lblComponenteTitle);
                     MenuContainer.Children.Add(lblComponenteDescription);
                 }
@@ -77,6 +88,32 @@ public partial class Menu : ContentPage
 		}
 	}
     #endregion
+
+	private void labelsCategoria_Tapped(object sender, TappedEventArgs e)
+	{
+		var label = (Label)sender;
+
+		if (label == null)
+			throw new Exception("Falha ao carregar interface!");
+
+		var tap = (TapGestureRecognizer)label.GestureRecognizers[0];
+		var page = (Type)tap.CommandParameter;
+
+        /* Sem flyoutpage abre a tela mas não teremos mais o menu lateral */
+        //App.Current.MainPage = page;
+
+        /* 
+		Nesse modelo as paginas eram instanciadas todas na inicialização do projeto e exibidas quando fossem chamadas (instanciadas no CategoryRepository) 
+		Isso gera uma grande perda de memoria, 
+		a outra solução seria não instanciar as telas na inicialização e sim, quando forem chamadas no click igual exemplo abaixo
+		*/
+        //((FlyoutPage)App.Current.MainPage).Detail = page;
+        //((FlyoutPage)App.Current.MainPage).IsPresented = false;
+
+        ((FlyoutPage)App.Current.MainPage).Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+        ((FlyoutPage)App.Current.MainPage).IsPresented = false;
+
+    }
 
     private void lblInicio_Tapped(object sender, TappedEventArgs e)
     {
