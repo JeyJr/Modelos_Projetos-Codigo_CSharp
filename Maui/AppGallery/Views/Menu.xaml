@@ -4,17 +4,33 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Menu"
+    BackgroundColor="#f3f3f3"
     Loaded="ContentPage_Loaded">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="NET MAUI - Gallery"
-            VerticalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Spacing="2">
+            <Label
+                Margin="25"
+                FontFamily="Roboto-Bold"
+                FontSize="24"
+                TextColor="#2F2F2F"
+                HorizontalOptions="Center"
+                Text="MAUI - Gallery"
+                VerticalOptions="Center" />
 
-        <Label Text="Início" />
-        <Label Text="Extra" />
-        <Label Text="Créditos" />
+            <StackLayout
+                x:Name="MainButtons"
+                Margin="50,0"
+                Spacing="20">
+                <Label x:Name="lblInicio" Text="Início">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="lblInicio_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Extra" />
+                <Label Text="Créditos" />
+            </StackLayout>
 
-        <VerticalStackLayout x:Name="MenuContainer" />
-    </VerticalStackLayout>
+            <StackLayout x:Name="MenuContainer" Margin="30,35" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
