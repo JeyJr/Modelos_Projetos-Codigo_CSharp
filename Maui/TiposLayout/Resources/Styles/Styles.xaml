@@ -10,6 +10,8 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="LineBreakMode" Value="WordWrap" />
+
     </Style>
 
     <Style
@@ -19,6 +21,8 @@
         <Setter Property="FontSize" Value="16" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="FontAttributes" Value="None" />
+        <Setter Property="LineBreakMode" Value="WordWrap" />
+
     </Style>
 
     <Style x:Key="NormalSemiWhite12" TargetType="Label">
@@ -26,6 +30,7 @@
         <Setter Property="FontSize" Value="12" />
         <Setter Property="TextColor" Value="#BABABA" />
         <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="LineBreakMode" Value="WordWrap" />
     </Style>
 
     <!--  MAUI  -->

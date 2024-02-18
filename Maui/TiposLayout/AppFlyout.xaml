@@ -16,7 +16,7 @@
     <FlyoutPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <pages:MainPage />
+                <pages:StackLayoutPage />
             </x:Arguments>
         </NavigationPage>
     </FlyoutPage.Detail>
