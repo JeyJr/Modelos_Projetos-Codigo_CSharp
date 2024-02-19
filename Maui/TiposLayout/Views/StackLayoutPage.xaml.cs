@@ -9,6 +9,7 @@ public partial class StackLayoutPage : ContentPage
 	public StackLayoutPage()
 	{
 		InitializeComponent();
-        NavigationPage.SetTitleView(this, CustomComponentsControl.GetCustomTitle("Stack Laytout Page", 12));
+
+        NavigationPage.SetTitleView(this, CustomComponentsControl.GetCustomTitle("Stack Layout Page", 12));
     }
 }
