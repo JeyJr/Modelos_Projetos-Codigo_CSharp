@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TiposLayout.Views.StackLayoutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Style="{DynamicResource Key=LayoutPage}">
+
+    <!--  Empilha os componentes, é possível definir a orientação (vertical, horizontal)  -->
+    <StackLayout Spacing="100">
+        <Label
+            HorizontalOptions="Center"
+            Text="Olá Mundo!"
+            VerticalOptions="Start" />
+        <Button
+            HeightRequest="200"
+            HorizontalOptions="Center"
+            Text="Btn 1"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="200" />
+
+        <StackLayout
+            BackgroundColor="DarkGray"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal">
+            <Button
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                Text="Btn 2"
+                VerticalOptions="Fill" />
+            <Button
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                Text="Btn 3"
+                VerticalOptions="Fill" />
+            <Button
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                Text="Btn 4"
+                VerticalOptions="Fill" />
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

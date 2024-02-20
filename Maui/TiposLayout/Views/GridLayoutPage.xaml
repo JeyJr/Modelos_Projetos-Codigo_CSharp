@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TiposLayout.Views.GridLayoutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Style="{DynamicResource Key=LayoutPage}">
+
+    <Grid Margin="20" BackgroundColor="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <BoxView
+            Grid.Row="0"
+            Grid.Column="0"
+            Color="Chocolate" />
+        <BoxView
+            Grid.Row="1"
+            Grid.Column="1"
+            Color="Bisque" />
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="35"
+            HorizontalTextAlignment="Center"
+            Text="Olá mundo!"
+            TextColor="Black"
+            VerticalTextAlignment="Center" />
+        <BoxView
+            Grid.Row="2"
+            Grid.Column="2"
+            Color="Chocolate" />
+
+
+    </Grid>
+</ContentPage>

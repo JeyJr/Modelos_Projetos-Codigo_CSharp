@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TiposLayout.Views.Menu"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Menu"
+    BackgroundColor="#3D3D3D"
+    Loaded="ContentPage_Loaded">
+    <Grid x:Name="MenuGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="MarginLeft" Width="32" />
+            <ColumnDefinition x:Name="MainContent" Width="Auto" />
+            <ColumnDefinition x:Name="MarginRight" Width="16" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="MarginTop" Height="5*" />
+            <RowDefinition x:Name="MainTitle" Height="30" />
+            <RowDefinition x:Name="Div0" Height="30" />
+            <RowDefinition x:Name="Content1" Height="5*" />
+            <RowDefinition x:Name="Content2" Height="5*" />
+            <RowDefinition x:Name="Content3" Height="5*" />
+            <RowDefinition x:Name="Content4" Height="5*" />
+
+            <RowDefinition x:Name="MarginBot" Height="30*" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Style="{StaticResource Key=TitleWhite18}"
+            Text="TIPOS DE LAYOUT" />
+
+
+        <!--  STACKLAYOUT  -->
+        <StackLayout
+            Grid.Row="3"
+            Grid.Column="1"
+            BackgroundColor="#3D3D3D"
+            Orientation="Vertical">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="lblStackLayout_Tapped" />
+            </StackLayout.GestureRecognizers>
+
+            <Label Style="{DynamicResource Key=TitleWhite16}" Text="Stack Layout" />
+            <Label Style="{DynamicResource Key=NormalSemiWhite12}" Text="StackLayout: Organiza em sequência" />
+        </StackLayout>
+
+        <StackLayout
+            Grid.Row="4"
+            Grid.Column="1"
+            BackgroundColor="#3D3D3D"
+            Orientation="Vertical">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="lblGridLayout_Tapped" />
+            </StackLayout.GestureRecognizers>
+
+            <Label Style="{DynamicResource Key=TitleWhite16}" Text="Grid Layout" />
+            <Label Style="{DynamicResource Key=NormalSemiWhite12}" Text="GridLayout: Organizar dentro de tabela" />
+        </StackLayout>
+
+        <StackLayout
+            Grid.Row="5"
+            Grid.Column="1"
+            BackgroundColor="#3D3D3D"
+            Orientation="Vertical">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="lblAbsoluteLayout_Tapped" />
+            </StackLayout.GestureRecognizers>
+
+            <Label Style="{DynamicResource Key=TitleWhite16}" Text="Absolute Layout" />
+            <Label Style="{DynamicResource Key=NormalSemiWhite12}" Text="AbsoluteLayout: Posição com regras absolutas" />
+        </StackLayout>
+
+        <StackLayout
+            Grid.Row="6"
+            Grid.Column="1"
+            BackgroundColor="#3D3D3D"
+            Orientation="Vertical">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="lblFlexLayout_Tapped" />
+            </StackLayout.GestureRecognizers>
+
+            <Label Style="{DynamicResource Key=TitleWhite16}" Text="Flex Layout" />
+            <Label Style="{DynamicResource Key=NormalSemiWhite12}" Text="FlexLayout: Similar ao FlexBox(CSS)" />
+        </StackLayout>
+
+    </Grid>
+
+</ContentPage>
