@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBasicoProcessStart = new System.Windows.Forms.Button();
+            this.btnSite = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnBasicoProcessStart
+            // btnSite
             // 
-            this.btnBasicoProcessStart.Location = new System.Drawing.Point(12, 12);
-            this.btnBasicoProcessStart.Name = "btnBasicoProcessStart";
-            this.btnBasicoProcessStart.Size = new System.Drawing.Size(154, 42);
-            this.btnBasicoProcessStart.TabIndex = 0;
-            this.btnBasicoProcessStart.Text = "Basico: Process Start";
-            this.btnBasicoProcessStart.UseVisualStyleBackColor = true;
-            this.btnBasicoProcessStart.Click += new System.EventHandler(this.btnBasicoProcessStart_Click);
+            this.btnSite.Location = new System.Drawing.Point(12, 12);
+            this.btnSite.Name = "btnSite";
+            this.btnSite.Size = new System.Drawing.Size(154, 42);
+            this.btnSite.TabIndex = 0;
+            this.btnSite.Text = "Site";
+            this.btnSite.UseVisualStyleBackColor = true;
+            this.btnSite.Click += new System.EventHandler(this.btnSite_Click);
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 66);
-            this.Controls.Add(this.btnBasicoProcessStart);
+            this.Controls.Add(this.btnSite);
             this.Name = "FrmPrincipal";
             this.Text = "Principal";
             this.ResumeLayout(false);
@@ -55,7 +55,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnBasicoProcessStart;
+        private System.Windows.Forms.Button btnSite;
     }
 }
 
