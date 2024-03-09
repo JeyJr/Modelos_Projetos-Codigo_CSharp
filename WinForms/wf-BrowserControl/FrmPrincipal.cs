@@ -70,6 +70,7 @@ namespace wf_BrowserControl
 
                 edgeOptions.BinaryLocation = @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe";
                 edgeOptions.AddArgument("--disable-notifications");
+                edgeOptions.AddExtension("caminho da extensao (renomeada ou nao) .crx"); //Encontre os arquivos da extensao, add para .zip depois renomeie para algum nome.crx
                 IWebDriver driver = new EdgeDriver(edgeOptions);
 
                 driver.Navigate().GoToUrl("https://jj-tprojects.github.io/site-TwoButtonPlayground/");
